@@ -8,6 +8,7 @@ import { relative, resolve } from 'node:path';
 import { formatCount } from './util/formatCount.js';
 import { CliOutput } from './util/CliOutput.js';
 import { ArgError, CheckResultError } from './util/error.js';
+import { loadEntrypoints } from './util/loadEntrypoints.js';
 
 const createNodeJsLogger = (): Logger =>
   'isTTY' in stdout && stdout.isTTY
@@ -34,6 +35,7 @@ export type Config = {
   system?: ts.System;
   logger?: Logger;
   includeDts?: boolean;
+  readPackageJson?: boolean;
 };
 
 // is async for backwards compatibility
@@ -46,6 +48,7 @@ export const tsr = async ({
   system = ts.sys,
   logger = createNodeJsLogger(),
   includeDts = false,
+  readPackageJson = false,
 }: Config) => {
   const configPath = resolve(projectRoot, configFile);
 
@@ -62,6 +65,12 @@ export const tsr = async ({
   const fileService = new MemoryFileService(
     fileNames.map((n) => [n, system.readFile(n) || '']),
   );
+
+  if (readPackageJson) {
+    fileService.set('/package.json', system.readFile('package.json') || '');
+    entrypoints = entrypoints.concat(loadEntrypoints({ options, fileService }));
+    fileService.delete('/package.json');
+  }
 
   const entrypointFiles = fileNames.filter(
     (fileName) =>
