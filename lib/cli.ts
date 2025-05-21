@@ -30,7 +30,7 @@ const options = [
   },
   {
     name: 'read-package-json',
-    alias: 'w',
+    alias: 'P',
     type: 'boolean',
     description: 'Load entrypoints defined in package.json',
     default: false,
