@@ -7,9 +7,14 @@
   <a href="https://github.com/tsrorg/tsr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tsrorg/tsr/actions/workflows/ci.yml/badge.svg?branch=main" /></a>
 </div>
 
+> Notice: This project is currently suspended.
+> Pull requests will be reviewed on an irregular basis, but please note that the development team will not be adding new features for the time being.
+
 # tsr
 
 TypeScript Remove (tsr) is a utility that removes unused code from TypeScript projects – It's like tree shaking, but for source files
+
+English | [한국어](./README_ko.md)
 
 [Migrating from v0.x (ts-remove-unused)](./doc/migration.md)
 
