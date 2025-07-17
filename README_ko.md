@@ -39,7 +39,7 @@ TypeScript는 피어 종속성(peer dependency)입니다.
 
 ## 빠른 시작
 
-1. **🔍 `tsconfig.json` 확인** – `include` 및 `exclude`가 철저하게 구성되어 tsr이 사용하지 않는 코드를 올바르게 감지할 수 있도록 하세요.
+1. **🔍 `tsconfig.json` 확인** – `include` 및 `exclude`가 철저하게 구성되어 tsr이 사용되지 않는 코드를 올바르게 감지할 수 있도록 하세요.
 
 2. **🔍 진입점 파일 확인** – 진입점 파일이 없으면 모든 파일이 불필요합니다. 일반적으로 `src/main.ts`와 같은 파일이나 `src/pages/*`와 같은 파일 그룹이 될 수 있습니다.
 
@@ -69,16 +69,16 @@ npx tsr 'src/main\.ts$'
   -v, --version           버전 번호 표시
 
 예시:
-  # 프로젝트의 진입점이 src/main.ts인 경우 사용하지 않는 코드를 검사
+  # 프로젝트의 진입점이 src/main.ts인 경우 사용되지 않는 코드를 검사
   tsr 'src/main\.ts$'
 
   # 변경 사항을 즉시 적용
   tsr --write 'src/main\.ts$'
 
-  # 커스텀 tsconfig.json을 사용하는 프로젝트의 경우 사용하지 않는 코드를 검사
+  # 커스텀 tsconfig.json을 사용하는 프로젝트의 경우 사용되지 않는 코드를 검사
   tsr --project tsconfig.app.json 'src/main\.ts$'
 
-  # src/pages에 여러 개의 진입점이 있는 프로젝트의 경우 사용하지 않는 코드를 검사
+  # src/pages에 여러 개의 진입점이 있는 프로젝트의 경우 사용되지 않는 코드를 검사
   tsr 'src/pages/.*\.ts$'
 
 ```
@@ -197,7 +197,7 @@ ESLint는 기본적으로 파일 단위로 동작하도록 설계되어 있어, 
 export const a = 'a';
 ```
 
-tsr의 주요 목표는 사용되지 않는 export를 제거하거, 관련 모듈 자체를 삭제하는 것입니다.
+tsr의 주요 목표는 사용되지 않는 export를 제거하고, 관련 모듈 자체를 삭제하는 것입니다.
 또한 export 제거의 결과로 발생하는 불필요한 import도 함께 제거합니다.
 
 ### Knip
