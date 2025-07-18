@@ -29,6 +29,13 @@ const options = [
     default: false,
   },
   {
+    name: 'read-package-json',
+    alias: 'P',
+    type: 'boolean',
+    description: 'Load entrypoints defined in package.json',
+    default: false,
+  },
+  {
     name: 'include-d-ts',
     type: 'boolean',
     description: 'Check for unused code in .d.ts files',
@@ -76,6 +83,9 @@ Examples:
   # Check unused code for a project with a custom tsconfig.json
   tsr --project tsconfig.app.json 'src/main\\.ts$'
 
+  # Load entrypoints from package.json
+  tsr --read-package-json
+
   # Check unused code for a project with multiple entrypoints in src/pages
   tsr 'src/pages/.*\\.ts$'
 
@@ -105,6 +115,7 @@ const main = () => {
     configFile: parsed.project || 'tsconfig.json',
     recursive: parsed.recursive,
     includeDts: parsed['include-d-ts'],
+    readPackageJson: parsed['read-package-json'],
   }).catch((error) => {
     if (error instanceof CheckResultError || error instanceof ArgError) {
       process.exitCode = 1;
