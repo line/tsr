@@ -6,6 +6,7 @@
     "lib": ["ES2023"],
     "target": "ES2022",
     "strict": true,
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
