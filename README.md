@@ -7,8 +7,8 @@
   <a href="https://github.com/tsrorg/tsr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tsrorg/tsr/actions/workflows/ci.yml/badge.svg?branch=main" /></a>
 </div>
 
-> Notice: This project is currently suspended.
-> Pull requests will be reviewed on an irregular basis, but please note that the development team will not be adding new features for the time being.
+> This project has ended.  
+> If you need similar functionality, please use similar tools such as Knip.
 
 # tsr
 
